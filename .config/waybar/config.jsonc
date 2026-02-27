@@ -1,0 +1,124 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 2,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "hyprland/scratchpad",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "custom/sys-stats",
+        "temperature",
+        "custom/brightness-bar",
+        "custom/battery-bar",
+        "tray"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "hyprland/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        }
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%H:%M}",
+        "format-alt": " {:%Y-%m-%d}"
+    },
+
+    "custom/sys-stats": {
+        "exec": "~/.config/scripts/sys-stats.sh",
+        "interval": 3,
+        "return-type": "json",
+        "format": "{}"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "custom/brightness-bar": {
+        "exec": "~/.config/scripts/brightness-bar.sh",
+        "interval": 1,
+        "format": "{}",
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-"
+    },
+
+    "custom/battery-bar": {
+        "exec": "~/.config/scripts/battery-bar.sh",
+        "interval": 1,
+        "return-type": "json",
+        "format": "{}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {signalStrength}%",
+        "format-ethernet": "󰖩 {ipaddr}",
+        "format-linked": "󰖩 (No IP)",
+        "format-disconnected": "󰀦 Desconectado",
+        "tooltip-format-wifi": "SSID: {essid}\nSinal: {signalStrength}%\nFrequência: {frequency} GHz\nIP: {ipaddr}\nGateway: {gwaddr}\nDown: {bandwidthDownBits}  Up: {bandwidthUpBits}",
+        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nDown: {bandwidthDownBits}  Up: {bandwidthUpBits}",
+        "tooltip-format-disconnected": "Sem conexão"
+    },
+
+    "pulseaudio": {
+        "format": "\ue638 {volume}%",
+        "format-bluetooth": "\ue638 {volume}%",
+        "format-bluetooth-muted": "\ue638 mudo",
+        "format-muted": "\ue638 mudo",
+        "on-click": "pavucontrol"
+    },
+
+}
+}

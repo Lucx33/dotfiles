@@ -1,0 +1,6 @@
+configuration {
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+@import "current-theme.rasi"

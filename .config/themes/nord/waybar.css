@@ -1,0 +1,203 @@
+/* GruvBox Dark Hard + Nord Blue
+   bg hard:  #1d2021
+   bg:       #282828
+   bg1:      #3c3836
+   blue:     #77BDFD / #77BDFD
+   fg:       #ebdbb2
+*/
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #1d2021;
+    border-bottom: 2px solid #77BDFD;
+    color: #77BDFD;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    box-shadow: inset 0 -2px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px #77BDFD;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    color: #665c54;
+    border-radius: 4px;
+    margin: 4px 2px;
+}
+
+#workspaces button:hover {
+    background: rgba(60, 56, 54, 0.5);
+    color: #77BDFD;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background-color: rgba(69, 133, 136, 0.25);
+    color: #77BDFD;
+    border-bottom: 2px solid #77BDFD;
+    box-shadow: none;
+}
+
+#workspaces button.urgent {
+    color: #fb4934;
+    border-bottom: 2px solid #fb4934;
+}
+
+/* Window title */
+#window {
+    color: #77BDFD;
+    padding: 0 8px;
+}
+
+/* Relógio — ilha central */
+#clock {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #A2D2FB;
+    border: 1px solid #77BDFD;
+    border-radius: 8px;
+    padding: 2px 14px 2px 8px;
+    margin: 4px 4px;
+    font-weight: bold;
+}
+
+#clock label {
+    font-family: "Symbols Nerd Font", "JetBrainsMono Nerd Font", sans-serif;
+}
+
+/* Todos os módulos — mesmo bloco escuro */
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#custom-sys-stats {
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    border: 1px solid #77BDFD;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #77BDFD;
+}
+
+/* Usa fonte não-monospaced para ícones centralizarem corretamente */
+#idle_inhibitor,
+#custom-sys-stats {
+    font-family: "Symbols Nerd Font", "Font Awesome 6 Free", sans-serif;
+}
+
+/* Estados críticos mantêm vermelho para alerta */
+#cpu.high,
+#temperature.critical,
+#battery.critical:not(.charging),
+#network.disconnected {
+    color: #fb4934;
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#temperature.critical {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to { color: #A2D2FB; }
+}
+
+#pulseaudio.muted {
+    color: rgba(119, 189, 253, 0.4);
+}
+
+/* Tray */
+#tray {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    padding: 0 8px;
+    margin: 4px 2px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: #fb4934;
+}
+
+/* Brightness / Battery spacing */
+#custom-brightness-bar {
+    margin-right: 8px;
+}
+
+#custom-battery-bar {
+    margin-right: 12px;
+}
+
+#custom-battery-bar.critical {
+    color: #fb4934;
+}
+
+/* Idle inhibitor */
+#idle_inhibitor {
+    color: #77BDFD;
+}
+
+#idle_inhibitor.activated {
+    color: #77BDFD;
+}
+
+/* Power profiles */
+#power-profiles-daemon.performance {
+    color: #fb4934;
+}
+
+/* Scratchpad */
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+/* Tooltip */
+tooltip {
+    background: rgba(29, 32, 33, 0.95);
+    border: 1px solid #77BDFD;
+    border-radius: 6px;
+}
+
+tooltip label {
+    color: #77BDFD;
+}
